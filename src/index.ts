@@ -5,6 +5,7 @@ import { cors } from "@elysiajs/cors";
 import { swagger } from "@elysiajs/swagger";
 
 import "./config/database/mongodb.config";
+import { apiRoutes } from "./controller";
 
 const app = new Elysia()
   .use(
@@ -35,6 +36,7 @@ app.use(
 );
 app.use(helmet());
 app.use(compression());
+app.use(apiRoutes);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
