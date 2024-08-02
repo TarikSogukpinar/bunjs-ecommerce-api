@@ -1,11 +1,27 @@
-import { Elysia } from "elysia";
+import { Elysia, t } from "elysia";
 import { helmet } from "elysia-helmet";
 import { compression } from "elysia-compression";
 import { cors } from "@elysiajs/cors";
+import { swagger } from "@elysiajs/swagger";
+
+import "./config/database/mongodb.config";
 
 const app = new Elysia()
-  .get("/", () => "Hello Elysia")
-  .listen(process.env.PORT as string | number);
+  .use(
+    swagger({
+      documentation: {
+        info: {
+          title: "Elysia Documentation",
+          version: "1.0.0",
+        },
+        tags: [
+          { name: "App", description: "General endpoints" },
+          { name: "Auth", description: "Authentication endpoints" },
+        ],
+      },
+    })
+  )
+  .listen(process.env.PORT || 5000);
 
 app.use(
   cors({
