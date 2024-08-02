@@ -1,12 +1,21 @@
 {
-  "name": "app",
+  "name": "e-commerce-bunjs",
+  "main": "src/index.ts",
   "version": "1.0.50",
+  "author": {
+    "name": "TarikSogukpinar"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cors": "^1.1.0",
+    "@types/compression": "^1.7.5",
+    "elysia": "^1.1.4",
+    "elysia-compression": "^0.0.7",
+    "elysia-helmet": "^2.0.0",
+    "mongoose": "^8.5.2"
   },
   "devDependencies": {
     "bun-types": "latest"
